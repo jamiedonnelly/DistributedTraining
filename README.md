@@ -7,6 +7,7 @@ This is technically referred to **Pipeline Parallelism** by vertically segmentin
 The key to Pipeline Parallelism using PyTorch is distributed communication via the `torch.distributed.rpc` API. Using `rpc.remote` within a superclass (i.e., whole network) definition, subnetworks can be initialised on worker nodes. The below code and example is heavily inspired from [1], [7].
 
 **Autoencoder toy example**
+
 _Network architecture is arbitrary and purely to illustrate the distrubuted training_ 
 
 ```
@@ -74,6 +75,7 @@ In the above code, a base `SubNetwork` class is initialised to be inherited from
 The Encoder and Decoder consist of 2 Linear layers each (which can be distributed between 2 GPUs if desired) and the DistAutoEncoder is responsible for remotely initialising the subnetworks on each worker node, collecting *All* the parameter RRefs, and finally executing the froward pass by executing remote methods on the worker nodes. 
 
 **Training Loop** 
+
 The master node is responsible for initialising the model and coordination, 
 
 ```
@@ -99,8 +101,7 @@ The bulk of the training logic is the same for a distributed and serial model, t
 **Running the model**
 
 
-A list of some of the many resources I have referred to in going from having ~zero knowledge about practically implementing distributed/parallel neural network training to having a moderate understanding and getting working implementations
-=================================================================================================================================================
+
 References/Resources:
 [1] - https://pytorch.org/tutorials/intermediate/dist_pipeline_parallel_tutorial.html
 [2] - https://pytorch.org/tutorials/intermediate/rpc_tutorial.html#
@@ -111,4 +112,4 @@ References/Resources:
 [7] - https://pytorch.org/tutorials/advanced/rpc_ddp_tutorial.html
 [8] - https://gist.github.com/TengdaHan/1dd10d335c7ca6f13810fff41e809904
 [9] - https://pytorch.org/docs/stable/elastic/run.html
-=================================================================================================================================================
+
