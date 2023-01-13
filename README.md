@@ -99,8 +99,7 @@ The bulk of the training logic is the same for a distributed and serial model, t
 **Running the model**
 
 
-# A list of some of the many resources I have referred to in going from having ~zero knowledge about practically implementing distributed/parallel neural network training to having a moderate understanding and getting working implementations #
-
+A list of some of the many resources I have referred to in going from having ~zero knowledge about practically implementing distributed/parallel neural network training to having a moderate understanding and getting working implementations
 =================================================================================================================================================
 References/Resources:
 [1] - https://pytorch.org/tutorials/intermediate/dist_pipeline_parallel_tutorial.html
